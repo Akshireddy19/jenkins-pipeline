@@ -1,6 +1,5 @@
 pipeline {
     agent any
-
     stages {
         stage("Build") {
             steps {
@@ -9,9 +8,10 @@ pipeline {
             post {
                 success {
                     emailext(
+                        mimeType: 'text/html',
                         to: "akshitha0205@gmail.com",
                         subject: "Build Status Email",
-                        body: "Build log attached",
+                        body: "Build log attached.",
                         attachLog: true
                     )
                 }
@@ -30,16 +30,6 @@ pipeline {
         stage("Complete") {
             steps {
                 echo "Completed."
-            }
-            post {
-                always {
-                    emailext(
-                        to: "akshitha0205@gmail.com",
-                        subject: "Pipeline Status: ${currentBuild.currentResult}",
-                        body: "Pipeline completed. Status: ${currentBuild.currentResult}",
-                        attachLog: true
-                    )
-                }
             }
         }
     }
