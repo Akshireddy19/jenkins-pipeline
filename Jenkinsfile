@@ -6,12 +6,18 @@ pipeline {
                 echo "Building ..."
             }
             post {
-                success {
+                always {
                     emailext(
                         mimeType: 'text/html',
-                        to: "akshitha0205@gmail.com",
-                        subject: "Build Status Email",
-                        body: "Build log attached.",
+                        to: 'akshitha0205@gmail.com',
+                        subject: "Jenkins Git process",
+                        body: """
+                            <html>
+                                <body>
+                                    <h1>Git jenkins Report</h1>
+                                </body>
+                            </html>
+                        """,
                         attachLog: true
                     )
                 }
