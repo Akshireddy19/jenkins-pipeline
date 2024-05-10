@@ -10,11 +10,11 @@ pipeline {
                     emailext(
                         mimeType: 'text/html',
                         to: 'akshitha0205@gmail.com',
-                        subject: "Jenkins Status",
+                        subject: "Git Jenkins Status",
                         body: """
                             <html>
                                 <body>
-                                    <h1>Jenkins Status Report</h1>
+                                    <h1>Jenkins Report</h1>
                                 </body>
                             </html>
                         """,
