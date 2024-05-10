@@ -7,14 +7,22 @@ pipeline {
             }
             post {
                 always {
-                        mail to: "akshitha0205@gmail.com",
-                        subject: "Build status Email",
-                        body: "Build log attached"
-                            
-                }
+                    emailext(
+                        mimeType: 'text/html',
+                        to: 'akshitha0205@gmail.com',
+                        subject: "Jenkins Status",
+                        body: """
+                            <html>
+                                <body>
+                                    <h1>Jenkins Status Report</h1>
+                                </body>
+                            </html>
+                        """,
+                        attachLog: true
+                    )
                 }
             }
-        
+        }
         stage("Test") {
             steps {
                 echo "Testing ..."
@@ -23,6 +31,11 @@ pipeline {
         stage("Deploy") {
             steps {
                 echo "Deploying ..."
+            }
+        }
+        stage("Complete") {
+            steps {
+                echo "Completed."
             }
         }
     }
