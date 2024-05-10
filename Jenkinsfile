@@ -9,7 +9,7 @@ pipeline {
                 always {
                     emailext(
                         mimeType: 'text/html',
-                        to: "reddynikhitha164@gmail.com",
+                        to: "akshitha0205@gmail.com",
                         subject: "Git Jenkins Status",
                         body: """
                             <html>
