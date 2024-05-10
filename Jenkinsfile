@@ -8,7 +8,7 @@ pipeline {
             post {
                 always {
                         mail to: "akshitha0205@gmail.com",
-                        subject: "Jenkins Status",
+                        subject: "Build status Email",
                         body: "Build log attached"
                             
                 }
